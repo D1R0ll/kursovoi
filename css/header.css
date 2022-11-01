@@ -1,0 +1,103 @@
+.header-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #141414;
+    position: fixed;
+    z-index: 10;
+}
+.header{
+    width: 100%;
+    max-width: 1500px;
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    background: inherit;
+}
+.header-el{
+    height:100%;
+    display: flex;
+    align-items: center;
+    color:white;
+    font-size: 14pt;
+}
+.market{
+    cursor: pointer;
+    position: relative;
+}
+.header-svg{
+    height: 100%;
+    width: 30px;
+    object-fit: cover;
+    fill: #969696;
+    transition: all .2s;
+}
+.header-svg:hover{
+    fill:white;
+    cursor: pointer;
+}
+.title{
+    font-size: 25pt;
+}
+.title a{
+    color: White;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.search input{
+    border-bottom: 1.5px solid white;
+    width: 370px;
+    height: 30px;
+    color:white;
+}
+.basket{
+    object-fit: cover;
+}
+.profile{
+    color:white;
+    justify-content: flex-end;
+    gap: 40px;
+    width: 400px;
+}
+.profile-info{
+    position: relative;
+    cursor: pointer;
+    padding: 0px 10px;
+    transition: all 0s .2s;
+}
+.profile-info:hover .all-profile , .profile-info:hover{
+    visibility: visible;
+    background: #292929;
+    
+}
+.profile-name{
+    margin-left: 10px;
+    font-size: 14pt;
+}
+.profile-img{
+    border-radius: 50%;
+    border:2px solid white;
+    height: 35px;
+    width: 35px;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.market:hover .tovar-href-decor_line{
+    width: 100%;
+}
+.tovar-href-decor{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.tovar-href-decor_line{
+    transition: all .2s;
+    width: 0px;
+    height: 2px;
+    background: #0c830c;
+    margin-bottom: 8px;
+}

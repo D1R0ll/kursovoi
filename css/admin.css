@@ -1,0 +1,28 @@
+.content-wrapper{
+    margin-top:50px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+.content{
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+}
+.control-panel{
+    background: rgb(20, 20, 20);
+    height: auto;
+    width: 50px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 3px;
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 100;
+    margin-top: 40px;
+    min-height: 100px;
+}

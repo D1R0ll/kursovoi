@@ -1,0 +1,138 @@
+ul{
+    list-style-type: none;
+}
+body{
+    background: rgb(244, 244, 244);
+}
+.content-wrapper{
+    width: 100%;
+    top:50px;
+    display: flex;
+    justify-content: center;
+}
+.content{
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    margin-top:150px;
+}
+.content-title{
+    font-size: 16pt;
+    font-weight: bold;
+    padding: 10px;
+    text-align: justify;
+}
+.parametrs-title{
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+.parametrs-title svg{
+    height: 30px;
+    width: 30px;
+    transform: rotate(180deg);
+}
+.parametrs-title:hover{
+    cursor: pointer;
+}
+.wrapper{
+    width: 100%;
+    display: flex;
+}
+.priceEmiss{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    padding: 10px;
+}
+.up{
+    height: 250px;
+}
+
+.down{
+    flex-shrink: 0;
+    gap:40px;
+    justify-content: flex-end;
+}
+.price{
+    background: #ddd;
+    font-size: 14pt;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.byButton{
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 10px 20px;
+    background: rgb(62, 182, 82);
+    border-radius: 10px;
+    color:white;
+}
+.images{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.discription{
+    padding: 30px 0px;
+    box-sizing: border-box;
+    width: 100%;
+    object-fit: cover;
+    flex-shrink: 1;
+}
+.discription *{
+    margin-top: 10px;
+}
+.parametrs{
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 14pt;
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.list-stroke{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    gap:40px;
+}
+.list-stroke-el{
+    width: 100%;
+    flex-shrink: 1;
+}
+.list-stroke-title{
+    width: 70%;
+    flex-shrink: 0;
+    border-bottom:1px dotted #222;
+}
+.img_and_price{
+    gap:20px;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 10px; 
+    box-sizing: border-box;
+}
+.discription-text{
+    font-size: 14pt;
+}

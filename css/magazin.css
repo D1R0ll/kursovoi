@@ -1,0 +1,218 @@
+/* *{
+    box-sizing:border-box;
+} */
+a{
+    color:black;
+}
+ul{
+    list-style-type: none;
+    width: 100%;
+}
+li{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+ul label{
+    margin-left:10px ;
+}
+.decorCheckbox-wrap{
+    position: relative;
+}
+.decorCheckbox-wrap input{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    z-index: 20;
+    opacity: 0;
+    cursor: pointer;
+    background: none;
+    border:none;
+    outline: none;
+}
+.decorCheckbox-wrap input:checked + .decorCheckbox{
+    background: #53c553;
+    border:1px solid #53c553;
+}
+.decorCheckbox-wrap input:checked + .decorCheckbox svg{
+    opacity:1;
+}
+.decorCheckbox{
+    transition: all .2s;
+    width: 15px;
+    height: 15px;
+    background: rgb(235, 235, 235);
+    border-radius: 5px;
+    border:1px solid rgb(200, 200, 200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.decorCheckbox svg{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    object-fit: cover;
+    top:3px;
+    opacity: 0;
+    transition: all .0s;
+}
+.filters{
+    width: 260px;
+    flex-shrink: 0;
+    background: #ffffff;
+    color:black;
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 10px;
+}
+.filter-wrapper{
+    border-bottom: .0001em solid rgb(200, 200, 200);
+}
+.filter{
+    margin:20px 10px;
+    height: auto;
+    position: relative;
+    transition: all .2s;
+}
+.filter_title{
+    user-select: none;
+    cursor: pointer;
+    font-size: 14pt;
+    width: auto;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    transition: all .1s;
+    justify-content: space-between;
+}
+.filter_title svg{
+    min-height: 20px;
+    min-width: 20px;
+    max-height: 20px;
+    max-width: 20px;
+    margin-left:5px ;
+    transition: all .1s;
+}
+.filter_title:hover{
+    color:#7ec27e;
+}
+.filter_title:hover svg{
+    fill:#7ec27e;
+}
+.filter_option{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    transition: all .2s;
+    display: none;
+}
+.filter_option div{
+    display: flex;
+    gap:10px;
+    align-items: center;
+}
+.filter_option input[type=text]{
+    width: 60px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 5px;
+}
+.tovari{
+    flex-shrink: 1;
+    width: 100%;
+}
+.tovar{
+    box-sizing:border-box;
+    margin-bottom: 40px;
+    background: white;
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 10px;
+    /* background: #e7e7e7; */
+    /* background: #eaf2ea; */
+    width: 100%;
+    max-width: 900px;
+    min-width: 600px;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    height: 200px;
+    padding: 10px;
+}
+.tovar-main-img{
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.tovar-desc{
+    word-break: break-all ;
+    color:black;
+    width: 100%;
+    height: 100%;
+    margin-left:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 15px;
+}
+.tovar-title{
+    font-size: 16pt;
+    width: 100%;
+}
+.tovar-desc-el{
+    width: 100%;
+    flex-shrink: 0;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 60px;
+}
+.price{
+    padding: 5px;
+    color:black;
+    border-radius: 10px;
+    font-size: 18pt;
+    font-weight: bold;
+}
+.buy{
+    padding: 15px;
+    background: #7ec27e;
+    color:rgb(35, 35, 35);
+    border-radius: 10px;
+    font-size: 18pt;
+    margin-right: 50px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.buy:hover{
+    background: #53c553;
+}
+@media (max-width:1000px){
+    .content{
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .filters{
+        width: 100%;
+    }
+}
+.confirmFilters-wrapper{
+    padding: 20px 10px;
+}
+.confirmFilters{
+    width: 100%;
+    font-size: 14pt;
+    background: #53c553;
+    cursor: pointer;
+    border-radius: 10px;
+    color:white;
+    padding: 10px 0px;
+}

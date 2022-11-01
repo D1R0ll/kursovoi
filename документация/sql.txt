@@ -1,0 +1,22 @@
+create table product(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    name text,
+    price double,
+    graficProcessorMaker char(100),
+    graficProcessor char(100),
+    memoryType char(10),
+    volumeMemory int,
+    maker char(100),
+    emiss double,
+    warranty int,
+    memoryBusBitRate int,
+    effectiveMemoryFrequency int,
+    maximumMemoryBandwidth double,
+    frequencyOfOperationOfTheVideoChip int,
+    rtx boolean,
+    connectors text,
+    permission char(20),
+    connectionInterface char(20),
+    consumption int,
+    cooling text
+)

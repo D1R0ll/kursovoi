@@ -1,0 +1,21 @@
+body{
+    background: rgb(244, 244, 244);
+}
+.content-wrapper{
+    margin-top:50px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.content{
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-top: 100px;
+    gap:40px;
+}
