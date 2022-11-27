@@ -19,3 +19,20 @@ body{
     margin-top: 100px;
     gap:40px;
 }
+.db_object{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap:20px;
+}
+.db_object img{
+    height: 160px;
+    width: 160px;
+    object-fit: cover;
+}
+.db_object span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -13,8 +13,8 @@
 </head>
 <body>
 <?php
-    require 'php/databaseconnect.php';
-    session_start();
+    // require 'php/databaseconnect.php';
+    // session_start();
 ?>
 <?php include("php/header.php");?>
 <content>

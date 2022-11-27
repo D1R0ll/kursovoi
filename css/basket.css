@@ -16,6 +16,9 @@
     border-radius: 10px;
     margin-top:67px;
 }
+.delete{
+    margin-right: 50px;
+}
 .delete svg{
     width: 30px;
     height: 30px;
@@ -35,6 +38,16 @@
     font-size: 18pt;
     font-weight: bold;
     border-bottom: 1px solid rgb(219, 219, 219);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center ;
+}
+.num{
+    width: auto;
+}
+.priceAndRemove{
+    display: flex;
+    justify-content: space-between;
 }
 .bybotton{
     padding: 20px;
@@ -42,6 +55,7 @@
 .bybotton button{
     background: #7ec27e;
     border-radius: 10px;
+    color:rgb(18, 18, 18);
     width: 100%;
     padding: 10px;
     font-size: 14pt;
@@ -64,4 +78,14 @@
         width: 100%;
         text-align: center;
     }
+}
+
+.tovar-count button{
+    user-select: none;
+    font-size: 14pt;
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 10px;
+    margin: 5px;
 }

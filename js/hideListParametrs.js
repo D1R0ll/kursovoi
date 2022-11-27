@@ -1,5 +1,5 @@
 document.querySelectorAll(".filter_title").forEach((el)=>{
-    el.isHide = true;
+    el.isHide = false;
     const sibling = el.nextElementSibling;
     const arrow = el.querySelector("svg");
     el.addEventListener("click",function (){

@@ -20,3 +20,37 @@ create table product(
     consumption int,
     cooling text
 )
+create TABLE product (
+	id int PRIMARY KEY AUTO_INCREMENT,
+    model text,
+    img text,
+    discription text,
+    price dobule,
+    guarantee int,
+graficProcessorProizvoditel char(100),
+    graficProcessorMaker char(100),
+    graphicsProcessor char(50),
+    technicalProcess int,
+    videoMemoryCapacity int,
+    memoryType char(10),
+    memoryBusBitRate int,
+    maximumMemoryBandwidth double,
+    effectiveMemoryFrequency int,
+    maximumResolution char(100),
+    typeOfCooling char(50),
+    rtx char(10),
+    videoConnectors text,
+    connectionInterface text,
+    recommendedPowerSupply int,
+)
+
+
+create TABLE product_order (
+	user_id int,
+    FOREIGN KEY (user_id)  REFERENCES user (id),
+    product_id int,
+    FOREIGN KEY (product_id)  REFERENCES product (id)
+)
+
+
+$q = $conn->prepare("DESCRIBE `product`");

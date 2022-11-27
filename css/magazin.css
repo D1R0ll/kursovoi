@@ -1,7 +1,5 @@
-/* *{
-    box-sizing:border-box;
-} */
-a{
+
+.tovar-href{
     color:black;
 }
 ul{
@@ -66,6 +64,7 @@ ul label{
     color:black;
     box-shadow: 0px 0px 5px rgb(146, 146, 146);
     border-radius: 10px;
+    margin-bottom: 100px;
 }
 .filter-wrapper{
     border-bottom: .0001em solid rgb(200, 200, 200);
@@ -107,7 +106,7 @@ ul label{
     display: flex;
     justify-content: space-around;
     transition: all .2s;
-    display: none;
+    display: flex;
 }
 .filter_option div{
     display: flex;
@@ -130,8 +129,6 @@ ul label{
     background: white;
     box-shadow: 0px 0px 5px rgb(146, 146, 146);
     border-radius: 10px;
-    /* background: #e7e7e7; */
-    /* background: #eaf2ea; */
     width: 100%;
     max-width: 900px;
     min-width: 600px;
@@ -145,7 +142,7 @@ ul label{
 .tovar-main-img{
     width: 200px;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     flex-shrink: 0;
 }
 .tovar-desc{
@@ -155,11 +152,12 @@ ul label{
     height: 100%;
     margin-left:20px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 15px;
+}
+.tovar-desc div{
+    width: 100%;
 }
 .tovar-title{
     font-size: 16pt;
@@ -169,27 +167,39 @@ ul label{
     width: 100%;
     flex-shrink: 0;
     padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     gap: 60px;
+    display: block;
+}
+.discription{
+    max-height: 50px;
+    width: 80%;
+    overflow:hidden ;
+    text-align: justify;
+}
+.buyAndPrice{
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 .price{
-    padding: 5px;
     color:black;
     border-radius: 10px;
     font-size: 18pt;
     font-weight: bold;
 }
 .buy{
-    padding: 15px;
+    padding: 5px;
+    margin-right: 50px;
     background: #7ec27e;
     color:rgb(35, 35, 35);
     border-radius: 10px;
     font-size: 18pt;
-    margin-right: 50px;
     cursor: pointer;
     transition: all .2s;
+}
+.buy a{
+    white-space:nowrap;
 }
 .buy:hover{
     background: #53c553;
@@ -202,17 +212,39 @@ ul label{
     
     .filters{
         width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .tovari{
+        flex-shrink: 0;
+        width: 100%;
+    }
+    .filter-wrapper{
+        width: 250px;
+        display: flex;
+        align-items: flex-start;
     }
 }
 .confirmFilters-wrapper{
     padding: 20px 10px;
 }
 .confirmFilters{
+    user-select: none;
     width: 100%;
     font-size: 14pt;
     background: #53c553;
     cursor: pointer;
     border-radius: 10px;
     color:white;
-    padding: 10px 0px;
+    padding: 10px 10px;
+}
+
+.clearFilters-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.clearFilters{
+    color:black;
+    text-align: center;
 }

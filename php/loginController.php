@@ -1,21 +1,26 @@
 <?php 
     require 'databaseconnect.php';
+    require 'user.php';
     session_start();
     $login = trim($_POST['login']);
     $password = trim($_POST['password']);
-    $sql = "SELECT * FROM `user` WHERE `login` = '".$login."'";
-    
-    $d = $conn->prepare($sql);
-    $d->execute();
-    $user = $d->fetch(PDO::FETCH_ASSOC);
-    
-    if ($user && password_verify($password,$user['password'])){
-        $_SESSION["login"] = $user['login'];
-        $_SESSION["password"] = $user['password'];
-        $_SESSION["avatar"] = $user['img'];
+    if (!isset($login) || $login == '') {
+        redirect("http://localhost/верстка/login.php?login=1");
+        return;
+    }
+    if (!isset($password) || $password == '') {
+        redirect("http://localhost/верстка/login.php?password=1");
+        return;
+    }
+    $user_data = $conn->prepare("SELECT * FROM `user` WHERE `login` = :login");
+    $user_data->execute(["login"=>$login]);
+    $user_data = $user_data->fetch(PDO::FETCH_ASSOC);
+
+    if ($user_data && password_verify($password,$user_data['password'])){
+        $_SESSION["user"] = new User($user_data);
         redirect("http://localhost/верстка");
     }
     else{
-        redirect("http://localhost/верстка/login.php");
+        redirect("http://localhost/верстка/login.php?notFound=<br>'пользователь не найден или неверный пароль'");
     }
 ?>

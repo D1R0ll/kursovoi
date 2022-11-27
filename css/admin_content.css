@@ -1,0 +1,165 @@
+.content{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.functions{
+    position: fixed;
+    width: 100%;
+    max-width: 90%;
+    height: 120px;
+    flex-shrink: 0;
+    top:50px;
+    box-sizing: border-box;
+    padding: 40px 40px;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    background: rgba(244, 244, 244,0.8);
+    backdrop-filter: blur(5px);
+}
+.function{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+.function-button, .add-button, .update-button{
+    background: rgb(244, 244, 244);;
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 12pt;
+    cursor: pointer;
+    transition: all .2s;
+}
+.function-button:hover{
+    transform: translateY(-8px);
+}
+.form{
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 20px;
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap:30px;
+    margin-top: 50px;
+}
+.createInput{
+    border:1px solid rgb(146, 146, 146);
+    padding: 5px;
+    font-size: 12pt;
+    width: 100%;
+    box-sizing: border-box;
+}
+.createInputWrapper{
+    width: 100%;
+    flex-shrink: 0;
+}
+.add-button, .update-button{
+    width: 100%;
+    background: #53c553;
+    color:white;
+}
+.form{
+    display: none;
+}
+.removeBlock, .restatBlock{
+    width: 100%;
+    max-width: 1100px;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start
+}
+.restatBlock{
+    display: flex;
+}
+.db_object{
+    position: relative;
+    width: 200px;
+    height: auto;
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: white;
+    justify-content: flex-start;
+    gap:0px;
+}
+.db_object img{
+    user-select: none;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+.remove_bt{
+    width: 100%;
+    font-size: 13pt;
+    background: #f35050d3;
+    color:white;
+    padding: 20px 25px;
+    cursor:pointer;
+}
+.model{
+    box-sizing: border-box;  
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+}
+.restat_bt{
+    font-size: 13pt;
+    background: #79f350d3;
+    color:white;
+    padding: 20px 25px;
+    cursor:pointer;
+    width: 100%;
+}
+
+
+.selectImg{
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+}
+textarea{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 150px;
+    min-height: 50px;
+    height: 100px;
+}
+.blur{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0px;
+    left:0px;
+    background: rgba(113, 113, 113,0.5);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    overflow: scroll;
+    box-sizing: border-box;
+    align-items: flex-start; 
+    
+}
+#apdateForm{
+    display: flex;
+    background: white;
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 20px;
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap:30px;
+    margin-top: 50px;
+}

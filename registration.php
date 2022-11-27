@@ -13,6 +13,7 @@
             <div class="block block_auth">
                 <div action="" class="content">
                     <div class="inputs">
+                        <div class="line"><span class="title">Регистрация</span></div>
                         <div class="line">
                             <input name="login" type="text" id="login" required="required">
                             <label for="login">login</label>

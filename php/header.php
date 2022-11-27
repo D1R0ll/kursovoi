@@ -1,11 +1,29 @@
-    <?php session_start(); ?>
+    <?php 
+        require 'user.php';
+        session_start();
+        $img = "dwdwdw";
+        if (empty($_SESSION["user"])){
+            $img = "img/user_default.jpg";
+            $login = "гость";
+            $isAdmin = 0;
+        }
+        else{
+            $img = $_SESSION["user"]->img;
+            $login = $_SESSION["user"]->login;
+            $isAdmin = $_SESSION["user"]->isAdmin;
+        }
+      
+    ?>
     <div class="header-wrap">
         <div class="header">
-            <div class="title header-el"><a href="index.php"><p style="color:#0c830c;"><b>N</b></p><p>azvanie</p></a></div>
-            <div class="search header-el">
-                <input type="text" placeholder="введите поиск">
-                <xml version="1.0" ><svg class="header-svg" enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/></svg>
-            </div>
+            <div class="title header-el"><a href="index.php"><p style="color:#0c830c;"><b>G</b></p><p>räfikkärte</p></a></div>
+            <form class="search header-el" action="php/search.php" method="post">
+                <input type="text" name="search" placeholder="введите поиск" value="<?php if ($_GET["search"]){echo(trim($_GET["search"]));} ?>">
+                <button>
+                    <xml version="1.0" ><svg class="header-svg" enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z" id="XMLID_223_"/></svg>
+                </button>
+                
+            </form>
             <div class="market header-el">
                 <div class="tovar-href-decor">
                     <div class="tovar-href-decor_line"></div>
@@ -20,33 +38,32 @@
                 </div>
                 <div class="profile-info header-el">
                     <div class="profile-img">
-                        <img src="
-                            <?php
-                                if (empty($_SESSION["login"])){
-                                        echo("img/user_default.jpg"); 
-                                    }
-                                    else{
-                                        echo($_SESSION["avatar"]); 
-                                    }
-                             ?>
-                            " alt="">
+                        <img src="<?php echo($img); ?>" alt="">
                     </div>
                     <div class="profile-name">
                         <?php 
-                            if (empty($_SESSION["login"])){
-                               echo("гость"); 
-                            }
-                            else{
-                                echo($_SESSION["login"]); 
-                            }
+                            echo($login); 
                         ?>
                     </div>
                 </div>
-                <div class="header-el">
-                    <a href="">
-                        <xml version="1.0" ><svg style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="info"/><g id="icons"><path d="M22.2,14.4L21,13.7c-1.3-0.8-1.3-2.7,0-3.5l1.2-0.7c1-0.6,1.3-1.8,0.7-2.7l-1-1.7c-0.6-1-1.8-1.3-2.7-0.7   L18,5.1c-1.3,0.8-3-0.2-3-1.7V2c0-1.1-0.9-2-2-2h-2C9.9,0,9,0.9,9,2v1.3c0,1.5-1.7,2.5-3,1.7L4.8,4.4c-1-0.6-2.2-0.2-2.7,0.7   l-1,1.7C0.6,7.8,0.9,9,1.8,9.6L3,10.3C4.3,11,4.3,13,3,13.7l-1.2,0.7c-1,0.6-1.3,1.8-0.7,2.7l1,1.7c0.6,1,1.8,1.3,2.7,0.7L6,18.9   c1.3-0.8,3,0.2,3,1.7V22c0,1.1,0.9,2,2,2h2c1.1,0,2-0.9,2-2v-1.3c0-1.5,1.7-2.5,3-1.7l1.2,0.7c1,0.6,2.2,0.2,2.7-0.7l1-1.7   C23.4,16.2,23.1,15,22.2,14.4z M12,16c-2.2,0-4-1.8-4-4c0-2.2,1.8-4,4-4s4,1.8,4,4C16,14.2,14.2,16,12,16z" id="settings"/></g></svg>
-                    </a>
-                </div>
+            </div>
+            <?php
+            if ($isAdmin){
+                echo ('
+                    <div class="header-el">
+                            <a href="admin.php">
+                                <xml version="1.0" ><svg class="header-svg" enable-background="new 0 0 48 48" height="48px" version="1.1" viewBox="0 0 48 48" width="48px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Expanded"><g><g><path d="M24,20c-11.215,0-20-3.953-20-9s8.785-9,20-9s20,3.953,20,9S35.215,20,24,20z M24,4C15.486,4,6,6.875,6,11s9.486,7,18,7     s18-2.875,18-7S32.514,4,24,4z"/></g><g><path d="M24,28c-11.215,0-20-3.953-20-9v-8c0-0.553,0.447-1,1-1s1,0.447,1,1v8c0,4.125,9.486,7,18,7s18-2.875,18-7v-8     c0-0.553,0.447-1,1-1s1,0.447,1,1v8C44,24.047,35.215,28,24,28z"/></g><g><path d="M24,37c-11.215,0-20-3.953-20-9v-9c0-0.553,0.447-1,1-1s1,0.447,1,1v9c0,4.125,9.486,7,18,7s18-2.875,18-7v-9     c0-0.553,0.447-1,1-1s1,0.447,1,1v9C44,33.047,35.215,37,24,37z"/></g><g><path d="M24,46c-11.215,0-20-3.953-20-9v-9c0-0.553,0.447-1,1-1s1,0.447,1,1v9c0,4.125,9.486,7,18,7s18-2.875,18-7v-9     c0-0.553,0.447-1,1-1s1,0.447,1,1v9C44,42.047,35.215,46,24,46z"/></g></g></g></svg>
+                            </a>
+                        </div>
+                ');
+            }
+            ?>
+            <div class="header-el">
+                <a href="login.php">
+                <xml version="1.0" ><svg class="header-svg" style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">
+	.st0{opacity:0.2;fill:none;stroke:#000000;stroke-width:5.000000e-02;stroke-miterlimit:10;}
+</style><g id="grid_system"/><g id="_icons"><g><path d="M20.9,11.6c-0.1-0.1-0.1-0.2-0.2-0.3l-3-3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l1.3,1.3H13c-0.6,0-1,0.4-1,1s0.4,1,1,1h4.6    l-1.3,1.3c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l3-3c0.1-0.1,0.2-0.2,0.2-0.3C21,12.1,21,11.9,20.9,11.6z    "/><path d="M15.5,18.1C14.4,18.7,13.2,19,12,19c-3.9,0-7-3.1-7-7s3.1-7,7-7c1.2,0,2.4,0.3,3.5,0.9c0.5,0.3,1.1,0.1,1.4-0.4    c0.3-0.5,0.1-1.1-0.4-1.4C15.1,3.4,13.6,3,12,3c-5,0-9,4-9,9s4,9,9,9c1.6,0,3.1-0.4,4.5-1.2c0.5-0.3,0.6-0.9,0.4-1.4    C16.6,18,16,17.8,15.5,18.1z"/></g></g></svg>
+                </a>
             </div>
 
         </div>

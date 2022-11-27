@@ -132,3 +132,9 @@ button{
     background: rgba(0,0,0,.1);
     backdrop-filter: blur(5px);
 }
+.error{
+    background: rgba(236, 142, 142, 0.746);
+}
+.title{
+    font-size: 16pt;
+}

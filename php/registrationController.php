@@ -24,9 +24,11 @@
     $d->execute();
     $user = $d->fetch(PDO::FETCH_ASSOC);
 
+    $_SESSION["id"] = $user['id'];  
     $_SESSION["login"] = $login;
     $_SESSION["password"] = $password;
     $_SESSION["avatar"] = $user['img'];
+    $_SESSION["isAdmin"] = $user['isAdmin'];
 
     echo($_SESSION["avatar"]);
     redirect("http://localhost/верстка");
