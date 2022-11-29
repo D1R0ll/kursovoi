@@ -41,7 +41,7 @@
                                                 <span class="tovar-title">'.$product["model"].'</span>
                                             </div>
                                             <div class="tovar-desc-el tovar-count">
-                                                <button value="'.$product["id"].'" class="plus" onclick="plus(this)">+</button>
+                                                <button value="'.$product["id"].'" class="plus" onclick="plus(this,'.$product["count"].')">+</button>
                                                 <span class="count">'.$in_order[$i]["count"].'</span>
                                                 <button value="'.$product["id"].'" class="minus" onclick="minus(this)">-</button>
                                             </div> 
@@ -80,10 +80,12 @@
     </div>
 </div>
 <script>
-    function plus(el){
-        el.parentNode.querySelector(".count").textContent++;
-        upCount(el.parentNode.querySelector(".count").textContent,el.value);
-        document.querySelector('.endPrice').querySelector('p').textContent = parseInt(document.querySelector('.endPrice').querySelector('p').textContent)+parseInt(el.parentNode.parentNode.querySelector(".price").textContent)
+    function plus(el,max){
+        if (el.parentNode.querySelector(".count").textContent < max){
+            el.parentNode.querySelector(".count").textContent++;
+            upCount(el.parentNode.querySelector(".count").textContent,el.value);
+            document.querySelector('.endPrice').querySelector('p').textContent = parseInt(document.querySelector('.endPrice').querySelector('p').textContent)+parseInt(el.parentNode.parentNode.querySelector(".price").textContent)
+        }
     }
     function minus(el){
         if(el.parentNode.querySelector(".count").textContent > 1){

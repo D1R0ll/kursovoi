@@ -177,6 +177,7 @@
                                     '.$product["discription"].'
                                 </div> 
                                 <div class="tovar-desc-el buyAndPrice">
+                                    <div class="inStock"> в наличии '.$product["count"].'</div> 
                                     <div class="price">'.$product["price"].' p</div>
                                     <button type="submit" class="buy" " value="'.$product["id"].'" ><a href="#" >'.$text.'</a></button>
                                 </div>

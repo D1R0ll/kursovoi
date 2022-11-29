@@ -2,6 +2,7 @@
     require 'databaseconnect.php';
     require 'user.php';
     session_start();
+    $_SESSION["user"] = null;
     $login = trim($_POST['login']);
     $password = trim($_POST['password']);
     if (!isset($login) || $login == '') {

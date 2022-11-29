@@ -14,7 +14,7 @@
        
         $path =  __DIR__.'/img/';
 
-        $fileExt = end(explode('.', $file['name']));  // Получили расширение файла `jpg`
+        $fileExt = end(explode('.', $file['name']));
     
         $fileName = uniqid('image_') . "." . $fileExt;
         try {
@@ -29,7 +29,8 @@
             $_POST["img"] = $fileName;
             $stmt->execute($_POST);
             move_uploaded_file($file['tmp_name'], $path.$fileName);
+            echo("Товар добавлен!");
             
         } catch (Exception $e) {
-            echo $e->getMessage();
+            echo "Товар не добавлен ".($e->getMessage());
         }

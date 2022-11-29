@@ -248,3 +248,7 @@ ul label{
     color:black;
     text-align: center;
 }
+.inStock{
+    font-size: 13pt;
+    font-weight: bold;
+}

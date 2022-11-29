@@ -17,15 +17,9 @@
     else{
         $columns = substr($columns,0,-1);
     }
-    
-
-
         $file = $_FILES["img"];
-         
         $path =  dirname(__DIR__, 1).'/img/';
-    
         $fileExt = end(explode('.', $file['name']));  // Получили расширение файла `jpg`
-    
         $fileName = uniqid('image_') . "." . $fileExt;
         try {
             if ($file["name"] != "") {

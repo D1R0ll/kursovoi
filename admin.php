@@ -10,34 +10,38 @@
     <link rel="stylesheet" href="css/magazin.css">
     <link rel="stylesheet" href="css/body_content.css">
     <link rel="stylesheet" href="css/admin_content.css">
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 <?php
     include("php/header.php");
     require 'php/databaseconnect.php';
+    $_SESSION["conn"] = $conn;
     if ($_SESSION["user"]->isAdmin == 0 || $_SESSION["user"]->isAdmin == NULL){
         header('Location: '."login.php");
     }
-
 ?>   
 
 <div class="content-wrapper">
-    
-
-<div class="content">
-<div class="functions">
-    <div class="function">
-        <button class="function-button" onclick="ShowCreateProductForm('createBlock')">
-            Добавить товар
-        </button> 
-        <button class="function-button" onclick="ShowCreateProductForm('removeBlock')">
-            Удалить товар
-        </button> 
-        <button class="function-button" onclick="ShowCreateProductForm('restatBlock')">
-            Изменить товар
-        </button>
-    </div>
-</div>
+    <div class="content">
+        <div class="functions">
+            <div class="function">
+                <button class="function-button" onclick="ShowCreateProductForm('createBlock')">
+                    Добавить товар
+                </button> 
+                <button class="function-button" onclick="ShowCreateProductForm('removeBlock')">
+                    Удалить товар
+                </button> 
+                <button class="function-button" onclick="ShowCreateProductForm('restatBlock')">
+                    Изменить товар
+                </button>
+                <button class="function-button" onclick="uploadProductInformation()">
+                    Выгрузить информацию о товаре
+                </button>
+            </div>
+        </div>
+        
         <form class="createBlock form" id="createBlock">
             <div class="createInputWrapper">
                 <input class="createInput" type="text" placeholder="название" name="model">
@@ -46,6 +50,7 @@
                 <img class="selectImg">
                 <br>
                 <input class="createInput inputWithImg" type="file" placeholder="название" name="img">
+                <br>
             </div>
             <div class="createInputWrapper">
                 <textarea class="createInput"  placeholder="описание" name="discription"></textarea>
@@ -99,6 +104,9 @@
                 <input class="createInput" type="text" placeholder="рекомендуемая мощность блока питания" name="recommendedPowerSupply">
             </div>
             <div class="createInputWrapper">
+                <input class="createInput" type="text" placeholder="кол-во" name="count">
+            </div>
+            <div class="createInputWrapper">
                 <select class="createInput" name="rtx">
                     <option selected disabled value="">Трассировака</option>
                     <option value="есть">есть</option>    
@@ -110,24 +118,11 @@
             </div>
         </form>
         <div class="removeBlock form" id="removeBlock">
-            <?php
+            <?php 
+            $_POST["text"] = "удалить";
+            $_POST["clas"] = "remove_bt";
+             require 'php/insertProductToDeletForm.php';
             
-                $stmt = $conn->prepare("SELECT `img`,`model`,`id` FROM `product`");
-                $stmt->execute();
-                $allProducts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach($allProducts as $val){
-                    echo "<div class='db_object'>";
-                    foreach($val as $key=>$value){
-                        if ($key == "img"){
-                            echo("<img src='img/".$value."'>");
-                        }
-                        else if($key != "id"){
-                            echo("<div class='model'>".$value."</div>");
-                        }
-                    }
-                    echo("<button class='remove_bt' value='".$val["id"]."'>удалить</button>");
-                    echo "</div>";
-                }
             ?>
         </div>
         <div class="restatBlock form" id="restatBlock">
@@ -138,27 +133,72 @@
             </div>
 
             <?php
-                $stmt = $conn->prepare("SELECT `img`,`model`,`id` FROM `product`");
-                $stmt->execute();
-                $allProducts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach($allProducts as $val){
-                    echo "<div class='db_object'>";
-                    foreach($val as $key=>$value){
-                        if ($key == "img"){
-                            echo("<img src='img/".$value."'>");
-                        }
-                        else if($key != "id"){
-                            echo("<div class='model'>".$value."</div>");
-                        }
-                    }
-                    echo("<button class='restat_bt' value='".$val["id"]."'>изменить</button>");
-                    echo "</div>";
-                }
+                $_POST["text"] = "добавить";
+                $_POST["clas"] = "restat_bt";
+                require 'php/insertProductToDeletForm.php';
             ?>
         </div>
+        <!-- <div class="">
+                    <table id="tbl_exporttable_to_xls">
+                <thead>
+                    <th>Sr</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Job Profile</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><p>Amit Sarna</p></td>
+                        <td>Florida</td>
+                        <td>Data Scientist</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><p>Sagar Gada</p></td>
+                        <td>California</td>
+                        <td>Sr FullStack Dev</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><p>Ricky Marck</p></td>
+                        <td>Nevada</td>
+                        <td>Sr .Net Dev</td>
+                    </tr>           
+                </tbody>
+            </table>
+            <button onclick="ExportToExcel('xlsx')">Export table to excel</button>   
+        </div> -->
     </div>
 </div>
     <script>
+        async function insertProductToDeletForm(form,text,clas) {
+            let formData = new FormData();
+                formData.append("text",text);
+                formData.append("clas",clas);
+            let response = await fetch('php/insertProductToDeletForm.php', {
+                method: 'POST',
+                body: formData
+            });
+            let result = await response.text();
+            form.innerHTML = result;
+        }
+        //выгрузка
+        async function uploadProductInformation () {
+            let response = await fetch('php/uploadProductInformation.php', {
+                method: 'POST',
+                body: {}
+            });
+            let result = await response.text();
+            console.log(result);
+        }
+        function ExportToExcel(type, fn, dl) {
+            var elt = document.getElementById('tbl_exporttable_to_xls');
+            var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+            return dl ?
+                XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+                XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+        }
         //удалени
         async function remove(id){
             let url = new URL('php/remuveTovar.php', location);
@@ -188,6 +228,13 @@
                 el.style.display = "none";
             })
             document.querySelector("#"+form).style.display = "flex";
+            if (form == "removeBlock"){
+                insertProductToDeletForm(document.querySelector("#"+form),"удалить","remove_bt");
+            }
+            else if (form == "restatBlock"){
+               insertProductToDeletForm(document.querySelector("#"+form),"добавить","restat_bt");
+            }
+            
         }
 
         createBlock.onsubmit = async (e) => {
@@ -197,7 +244,10 @@
                 body: new FormData(createBlock)
             });
             let result = await response.text();
-            console.log(result);
+            alert(result);
+            createBlock.querySelectorAll(".createInput").forEach(el=>{
+                el.value = "";
+            })
         };
         //изменение
         document.querySelector(".blur").addEventListener("click",function (e){
@@ -268,106 +318,3 @@
     </script>
 </body>
 </html>
-
-<!-- 
-<div class="createInputWrapper">
-                <input class="createInput" type="number" placeholder="цена">
-            </div>
-            <div class="createInputWrapper">
-                <input class="createInput" type="text" placeholder="гарантия в месяцах">
-            </div>
-            <div class="createInputWrapper" multiple>
-                Производитель графического ядра 
-                <select class="createInput">
-                    <option value="AMD">AMD</option>    
-                    <option value="NVIDEA">NVIDEA</option>      
-                </select>
-            </div>
-            <div class="createInputWrapper" multiple>
-                <select>
-                    <option selected disabled>Производитель</option>
-                    <option value="MSi">MSi</option>    
-                    <option value="GIGABYTE">GIGABYTE</option>      
-                </select>
-            </div>
-            <div class="createInputWrapper" multiple>
-                <select>
-                    <option selected disabled>Модель графического процесскора</option>
-                    <option value="GeForce 210">GeForce 210</option>    
-                    <option value="GTX 1660 Super">GTX 1660 Super</option>      
-                </select>
-            </div>
-            <div class="createInputWrapper">
-                <input class="createInput" type="number" placeholder="техпроцесс">
-            </div>
-            <div class="createInputWrapper" multiple>
-                <select>
-                    <option selected disabled>Колличесвто видеопамяти</option>
-                    <option value="1">1</option>    
-                    <option value="2">2</option>      
-                    <option value="4">4</option>      
-                </select>
-            </div>
-            <div class="createInputWrapper" multiple>
-                <select>
-                    <option selected disabled>Тип памяти</option>
-                    <option value="DDR4">DDR4</option>    
-                    <option value="DDR5">DDR5</option>      
-                    <option value="DDR3">DDR3</option>      
-                </select>
-            </div>
-            <div class="createInputWrapper" multiple>
-                <select>
-                    <option selected disabled>Разрядность шины памяти</option>
-                    <option value="32">32</option>    
-                    <option value="64">64</option>         
-                </select>
-            </div>
-            <div class="createInputWrapper">
-                <input class="createInput" type="number" placeholder="Максимальная пропускная способность памяти">
-            </div>
-            <div class="createInputWrapper">
-                <input class="createInput" type="number" placeholder="Штатная частота работы видеочипа">
-            </div>
-            <div class="createInputWrapper" multiple>
-                <select>
-                    <option selected disabled>Максимальное разрешение</option>
-                    <option value="2560x1600">2560x1600</option>    
-                    <option value="1280x720">1280x720</option>         
-                </select>
-            </div>
-            <div class="createInputWrapper" multiple>
-                <select>
-                    <option selected disabled>Охлаждение</option>
-                    <option value="воздушное">воздушное</option>    
-                    <option value="водянное">водянное</option>         
-                </select>
-            </div>
-            <div class="createInputWrapper" multiple>
-                <select>
-                    <option selected disabled>RTX</option>
-                    <option value="есть">есть</option>    
-                    <option value="нет">нет</option>         
-                </select>
-            </div>
-
- -->
-
-
-
-  <!-- <div class="createInputWrapper createCheckbox">
-                <p>Интерфейсы подключения монитора</p>
-                <input type="checkbox" value="DVI-I" name="interface">DVI-I
-                <input type="checkbox" value="VGA" name="interface">VGA
-                <input type="checkbox" value="HDMI" name="interface">HDMI
-            </div> -->
-            <!-- <div class="createInputWrapper">
-                <select class="createInput" name="in">
-                    <option selected disabled value="">Интерфейсы подключения</option>
-                    <option value="PCI-E 2.0">PCI-E 2.0</option>    
-                    <option value="PCI-E 3.0" >PCI-E 3.0</option>         
-                </select>
-            </div>
-            <div class="createInputWrapper">
-                <input class="createInput" type="number" placeholder="Потребление" name="Bt">
-            </div> -->
