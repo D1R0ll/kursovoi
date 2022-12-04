@@ -187,7 +187,6 @@
                 body: formData
             });
         }
-        //блок вынести в php и добавлять в начало
         //отзывы
         createFeback.addEventListener("submit",async function (e){
             e.preventDefault();
@@ -208,7 +207,6 @@
             let result = await response.text();
 
             console.log(result)
-            console.log("__________")
 
             Array.from(this.children).forEach(el=>{
                 el.value = "";
