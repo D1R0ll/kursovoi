@@ -103,9 +103,11 @@ ul label{
 .filter_option{
     margin-top: 10px;
     width: 100%;
-    display: flex;
     justify-content: space-around;
     transition: all .2s;
+    display: none;
+}
+.filterPrice{
     display: flex;
 }
 .filter_option div{
@@ -171,8 +173,9 @@ ul label{
     display: block;
 }
 .discription{
+    text-indent:20px;
     max-height: 50px;
-    width: 80%;
+    max-width: 86%;
     overflow:hidden ;
     text-align: justify;
 }

@@ -1,5 +1,11 @@
 document.querySelectorAll(".filter_title").forEach((el)=>{
-    el.isHide = false;
+    if (window.getComputedStyle(el.nextElementSibling).display == 'flex'){
+        el.isHide = false;
+    }
+    else{
+        el.isHide = true;
+    }
+    
     const sibling = el.nextElementSibling;
     const arrow = el.querySelector("svg");
     el.addEventListener("click",function (){

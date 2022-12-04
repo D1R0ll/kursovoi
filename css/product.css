@@ -140,3 +140,98 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.febacks-wrapper{
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px rgb(146, 146, 146);
+    border-radius: 10px; 
+
+    margin-top:100px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.create-feback{
+    width: 100%;
+}
+.create-feback-button{
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 10px 20px;
+    background: rgb(62, 182, 82);
+    color:white;
+}
+.line{
+    display: flex;
+    gap: 30px;
+}
+textarea{
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+    min-height: 50px;
+    max-height: 250px;
+    height: 100px;
+    border:1px solid black;
+}
+.emis{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.emis svg{
+    fill:rgb(199, 199, 199);
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+    transition: all .2s .1s;
+    
+}
+.emis-star{
+    height: 30px;
+    width: 30px;
+    position: relative;  
+}
+.emis-star input{
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0; 
+}
+.febacks{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 40px;
+    padding: 60px 20px;
+}
+.feback{
+    font-size: 14pt;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid black;
+    gap: 20px;
+}
+.feback .line{
+    width: 100%;
+    justify-content: space-between;
+}
+.author{
+    font-weight: bold;
+    font-size: 16pt;
+}
+.feback-content{
+    text-indent:30px;
+}
+
+.user-emiss svg{
+    fill:#d8ff2e;
+}
+.delete-svg{
+    fill:rgb(203, 4, 4);
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}

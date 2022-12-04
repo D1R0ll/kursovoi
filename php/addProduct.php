@@ -1,5 +1,5 @@
 <?php
-    require 'php/databaseconnect.php';
+    require 'databaseconnect.php';
     session_start();
 
     $columns = "";
@@ -12,7 +12,7 @@
 
         $file = $_FILES["img"];
        
-        $path =  __DIR__.'/img/';
+        $path =  dirname(__DIR__,1).'/img/';
 
         $fileExt = end(explode('.', $file['name']));
     

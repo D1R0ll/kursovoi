@@ -5,7 +5,4 @@ class User{
             $this->$key = $value;
         }
     }
-    function getId(){
-        echo($this->id);
-    }
 }

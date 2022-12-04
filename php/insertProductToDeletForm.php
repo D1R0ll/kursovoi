@@ -20,19 +20,7 @@
                 echo("<div class='model'>".$value."</div>");
             }
         }
-        echo("<button class=".$_POST["clas"]." value='".$val["id"]."'>".$_POST["text"]."</button>");
+        echo("<button class=".$_POST["clas"]." onclick='".$_POST["func"]."(this)"."' value='".$val["id"]."'>".$_POST["text"]."</button>");
         echo "</div>";
     }
-    // ini_set('display_errors', '1');
-    // ini_set('display_startup_errors', '1');
-    // error_reporting(E_ALL);
-    // if ($_SESSION["conn"]){
-    //     return insertProductToDeletForm($_POST["text"],$_POST["clas"]);
-    // }
-    // else{
-    //     require 'databaseconnect.php';
-    //     $_SESSION["conn"] = $conn;
-    //     return insertProductToDeletForm($_POST["text"],$_POST["clas"]);
-    // }
-    
 ?>

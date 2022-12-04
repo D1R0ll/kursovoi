@@ -95,7 +95,6 @@
         else{
 
         }
-        
         upCount(el.parentNode.querySelector(".count").textContent,el.value);
     }
     async function upCount(count,product_id){
@@ -107,8 +106,12 @@
             body: data
         });
     }
-    function buy(){
-        alert("Товары купленны  ");
+    async function buy(){
+        document.querySelector(".tovari").innerHTML = '<div class="content_title"><span>В корзине </span><span class="count"> 0 </span><span class="count"> товара</span></div>';
+        document.querySelector(".endPrice").innerHTML = "Итог: <p class='num'>0</p>₽";
+        let response = await fetch('php/deleteAllOrders.php', {
+            method: 'POST',
+        });
     }
     function removeOrder(id){
         let url = new URL('php/remuveOrder.php', location);

@@ -1,7 +1,7 @@
 <?php
     require 'databaseconnect.php';
     session_start();
-    $request = "magazin.php?";
+    $request = "index.php?";
     var_dump($_POST);
     foreach($_POST as $key => $value){
         if (gettype($value) == 'array'){
@@ -24,6 +24,4 @@
     $request = "http://localhost/верстка/".substr($request,0,-1);
     redirect($request);
     echo($request);
-    // echo($request);
-    // redirect($request);
 ?>
